@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<resources>
+    <Resource id="java:/jdbc/gp-hsqldb" type="javax.sql.DataSource">
+        JdbcDriver org.hsqldb.jdbcDriver
+        JdbcUrl jdbc:hsqldb:fs:gp
+        UserName sa
+        Password 
+        JtaManaged true
+    </Resource>
+    <!--<Resource id="TestDS" type="DataSource">
+    JdbcDriver  com.mysql.jdbc.Driver
+    JdbcUrl jdbc:mysql://localhost/test
+    UserName    root
+    Password    root
+</Resource>-->
+</resources>
