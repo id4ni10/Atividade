@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+    <title>Pedidos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/estilo.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+  
+  
+  <!-- início Tela de Cadastro de Pedido -->
+<div id="cadastro-pedido">
+  <!-- Cadastro de Cliente -->
+  <div id="cadastro">
+    <form class="form-horizontal">
+      <fieldset>
+        <!-- Form Name -->
+        <legend>Cadastro de Pedido</legend>
+        <input type="hidden" id="cadastro-id" name="cadastro-id">
+        <!-- Text input-->
+        <div class="control-group">
+          <label class="control-label" for="cadastro-cpf">CPF</label>
+          <div class="controls">
+            <input id="cadastro-cpf" name="cadastro-cpf" type="text" placeholder="Informe o CPF" class="input-xlarge" required="">
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="control-group">
+          <label class="control-label" for="cadastro-nome">Nome</label>
+          <div class="controls">
+            <input id="cadastro-nome" name="cadastro-nome" type="text" placeholder="Informe o nome" class="input-xlarge">
+          </div>
+        </div>
+        <!-- Textarea -->
+        <div class="control-group">
+          <label class="control-label" for="cadastro-entrega">End. Entrega</label>
+          <div class="controls">                     
+            <textarea id="cadastro-entrega" name="cadastro-entrega">Rua</textarea>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="control-group">
+          <label class="control-label" for="cadastro-data">Data</label>
+          <div class="controls">
+            <input id="cadastro-data" name="cadastro-data" type="text" placeholder="00/00/0000" class="input-xlarge">
+          </div>
+        </div>
+        <!-- Button -->
+        <div class="control-group">
+          <label class="control-label" for="cadastro-adicionar"></label>
+          <div class="controls">
+            <span id="cadastro-adicionar" name="cadastro-adicionar" class="btn btn-info">Adicionar Produto</span>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"></div>
+    <!-- Table -->
+    <table class="table" id="listagem-produtos">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Qtd</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--
+        <tr>
+          <td>
+            <!-- Select Basic 
+            <div class="control-group">
+              <label class="control-label" for="adicionar-produto"></label>
+              <div class="controls">
+                <select id="adicionar-produto" name="adicionar-produto" class="input-medium" onchange="onChangeProduto(1);">
+                    <option>Mouse</option>
+                    <option>Teclado</option>
+                </select>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- Text input
+            <div class="control-group">
+              <label class="control-label" for="adicionar-descricao"></label>
+              <div class="controls">                     
+                <textarea id="adicionar-descricao" name="adicionar-descricao" disabled></textarea>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- Text input
+            <div class="control-group">
+              <label class="control-label" for="adicionar-valor"></label>
+              <div class="controls">                     
+                <input type="text" id="adicionar-valor" name="adicionar-valor" placeholder="Valor" disabled class="input-medium"/>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- Text input
+            <div class="control-group">
+              <label class="control-label" for="adicionar-quantidade"></label>
+              <div class="controls">                     
+                <input type="number" id="adicionar-quantidade" name="adicionar-quantidade" placeholder="Valor" class="input-medium"/>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- Text input
+            <div class="control-group">
+              <label class="control-label" for="adicionar-total"></label>
+              <div class="controls">                     
+                <input type="text" id="adicionar-total" name="adicionar-total" placeholder="Total" disabled class="input-medium"/>
+              </div>
+            </div>
+          </td>
+        </tr>-->
+      </tbody>
+    </table>
+  </div>
+  <!-- Text input-->
+  <div class="control-group">
+    <label class="control-label" for="pedido-total">TOTAL</label>
+    <div class="controls">
+      <input type="text" id="pedido-total" name="pedido-total" placeholder="Total" disabled class="input-medium">
+    </div>
+  </div>
+  <!-- Ações do Pedido -->
+  <!-- Button (Double) -->
+  <div class="control-group">
+    <label class="control-label" for="cadastro-salvar"></label>
+    <div class="controls">
+      <span id="cadastro-salvar" name="cadastro-salvar" class="btn btn-success">Salvar</span>
+      <span id="cadastro-cancelar" name="cadastro-cancelar" class="btn btn-danger">Cancelar</span>
+    </div>
+  </div>
+</div>
+<!-- fim Tela de Cadastro de Pedido -->
+
+
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="listagem-novo"></label>
+  <div class="controls">
+    <span id="listagem-novo" name="listagem-novo" class="btn btn-success">Adicionar Novo Pedido</span>
+  </div>
+</div>
+<table id="listagem-tabela"  class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>CPF</th>
+      <th>Nome</th>
+      <th>Data</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="listagem-id">1</th>
+      <td class="listagem-cpf">111.111.111-11</td>
+      <td class="listagem-nome"> João</td>
+      <td class="listagem-data">12/05/2014</td>
+      <td class="listagem-acoes">Visualizar</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div class="tab-pane" id="tab1">
+  <div  id="visualizar-pedido">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>CPF</th>
+          <th>Nome</th>
+          <th>End. Entrega</th>
+          <th>Data</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" class="visualizar-cpf" name="visualizar-cpf" placeholder="CPF" disabled=""></td>
+          <td><input type="text" class="visualizar-solicitante" name="visualizar-solicitante" placeholder="solicitante" disabled=""></td>
+          <td><textarea class="visualizar-endereco" name="visualizar-endereco" placeholder="End. Entrega"></textarea></td>
+          <td><input type="text" class="visualizar-data" name="visualizar-data" placeholder="Data" disabled=""></td>
+          <td><input type="text" class="visualizar-total" name="visualizar-total" placeholder="Total" disabled=""></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="tab-pane" id="tab2">
+  <div  id="visualizar-produto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Qtd</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+   
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/pedidos.js"></script>
+	
+  </body>
+</html>

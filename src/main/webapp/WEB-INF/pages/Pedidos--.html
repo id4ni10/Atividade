@@ -1,0 +1,136 @@
+<!DOCTYPE>
+<html lang="pt-br">
+
+<head>
+<meta charset="utf-8"/>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="js/pedidos.js"></script>
+
+
+<style>
+div.ui-datepicker{
+ font-size:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- início Tela de Cadastro de Pedido -->
+<div id="cadastro-pedido">
+
+<!-- Cadastro de Cliente -->
+<div id="cadastro">
+	<input type="hidden" id="cadastro-id" name="cadastro-id">
+	<input type="text" id="cadastro-cpf" name="cadastro-cpf" placeholder="CPF"/>
+	<input type="text" id="cadastro-nome" name="cadastro-nome" placeholder="Nome"/>
+	<input type="text" id="cadastro-entrega" name="cadastro-entrega" placeholder="End. Entrega"/>
+	<input type="text" id="cadastro-data" name="cadastro-data" class="date" placeholder="Data"/>
+	<button id="cadastro-adicionar">Adicionar Produto</button>
+</div>
+
+<!-- Adição de Produto -->
+<div id="adicionar">
+	<select id="adicionar-produto" name="adicionar-produto">
+		  <option value="0">Selecione</option>
+		  <option value="1">Mouse</option>
+		  <option value="2">Teclado</option>
+	</select>
+	<textarea id="adicionar-descricao" name="adicionar-descricao" placeholder="Descrição" disabled></textarea>
+	<input type="text" id="adicionar-valor" name="cadastro-nome" placeholder="Valor" disabled />
+	<input type="number" id="adicionar-quantidade" name="cadastro-quantidade" placeholder="Valor" />
+	<input type="text" id="adicionar-total" name="cadastro-total" placeholder="Total" disabled />
+</div>
+
+<!-- Valor Total -->
+<input type="text" id="pedido-total" name="pedido-total" placeholder="Total" disabled />
+
+<!-- Ações do Pedido -->
+<button id="cadastro-cancelar">Cancelar</button>
+<button id="cadastro-salvar">Salvar</button>
+
+</div>
+<!-- fim Tela de Cadastro de Pedido -->
+
+
+
+<!-- início Tela de Listagem de Pedido -->
+<div id="listagem-pedido">
+
+<button id="listagem-novo">Novo Pedido</button>
+
+<div id="listagem-pedido">
+
+<table id="listagem-tabela">
+	<thead>
+	  <tr>
+		<th>ID</th>
+		<th>CPF</th>
+		<th>Nome</th>
+		<th>Data</th>
+		<th>Ações</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+		<th class="listagem-id">1</th>
+		<td class="listagem-cpf">111.111.111-11</td>
+		<td class="listagem-nome"> João</td>
+		<td class="listagem-data">12/05/2014</td>
+		<td class="listagem-acoes">Visualizar</td>
+	  </tr>
+	</tbody>
+</table>
+</div>
+
+</div>
+<!-- fim Tela de Listagem de Pedido -->
+
+<!-- início Tela de Visualizar Pedido e Produto -->
+<div id="visualizar-pedido-produto">
+	
+	<button id="visualizar-tela-pedido">Pedido</button>
+	<button id="visualizar-tela-produto">Produto</button>
+
+	<div id="visualizar-pedido">
+		<input type="text" id="visualizar-cpf" name="visualizar-cpf" placeholder="CPF" disabled />
+		<input type="text" id="visualizar-solicitante" name="visualizar-solicitante" placeholder="solicitante" disabled />
+		<textarea id="visualizar-endereco" name="visualizar-endereco" placeholder="End. Entrega"></textarea>
+		<input type="text" id="visualizar-data" name="visualizar-data" placeholder="Data" disabled />
+		<input type="text" id="visualizar-total" name="visualizar-total" placeholder="Total" disabled />
+	</div>
+	
+	<div id="visualizar-produto">
+	<table id="visualizar-tabela">
+	<thead>
+	  <tr>
+		<th>Produto</th>
+		<th>Descrição</th>
+		<th>Valor</th>
+		<th>Quantidade</th>
+		<th>Total</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+		<th class="listagem-id">1</th>
+		<td class="listagem-cpf">111.111.111-11</td>
+		<td class="listagem-nome"> João</td>
+		<td class="listagem-data">12/05/2014</td>
+		<td class="listagem-acoes">Visualizar</td>
+	  </tr>
+	</tbody>
+</table>		
+</div>
+
+
+</div>
+<!-- fim Tela de Visualizar Pedido -->
+
+</body>
+
+
+</html>
