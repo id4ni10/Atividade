@@ -1,7 +1,5 @@
 package api;
 
-import java.util.Collection;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -47,7 +45,7 @@ public class Produtos extends MyGenericRest<Produto> {
     @GET
     public Response findName(@PathParam(value = "nome") final String nome) {
         System.out.println(getModel().find(nome).size());
-        return Response.ok(Render.JSON(Result.OK(getModel().find(nome)))).type("application/json").header("Access-Control-Allow-Origin", "*").build();
+        return Response.ok(Render.JSON(Result.OK(getModel().find(nome)))).type("application/json").build();
     }
 
     @Path("delete/{id}")
@@ -68,7 +66,7 @@ public class Produtos extends MyGenericRest<Produto> {
         System.out.println(id);
         try {
             Produto p = dao.findById(id);
-
+            
             p.setNome(form.getFirst("produto.nome"));
             p.setDescricao(form.getFirst("produto.descricao"));
             p.setQuantidade(Integer.parseInt(form.getFirst("produto.quantidade")));
@@ -80,13 +78,5 @@ public class Produtos extends MyGenericRest<Produto> {
             ex.printStackTrace();
             return Response.ok(Render.JSON(Result.OK("Erro ao Alterar: " + ex.getMessage()))).type("application/json").header("Access-Control-Allow-Origin", "*").build();
         }
-    }
-
-    @Path("disponiveis")
-    @GET
-    public Response findDisponiveis() {
-        Collection<Produto> produtos = dao.getDisponiveis();
-
-        return Response.ok(Render.JSON(Result.OK(produtos))).type("application/json").header("Access-Control-Allow-Origin", "*").build();
     }
 }

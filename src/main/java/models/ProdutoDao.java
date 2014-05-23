@@ -4,8 +4,6 @@
  */
 package models;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
@@ -64,17 +62,6 @@ public class ProdutoDao extends GenericModel<Produto> {
             throw new EJBException("Quantidade do produto " + pro.getNome()
                     + " é insuficiente em estoque!");
         }
-    }
-
-    public Collection<Produto> getDisponiveis() {
-        List<Produto> produtos = this.findAll();
-        List<Produto> disponiveis = new ArrayList<Produto>();
-
-        for (Produto produto : produtos) {
-            if (produto.getQuantidade() > 0) {
-                disponiveis.add(produto);
-            }
-        }
-        return disponiveis;
-    }
+    }   
+    
 }
