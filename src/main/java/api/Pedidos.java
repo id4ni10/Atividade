@@ -4,6 +4,7 @@
  */
 package api;
 
+import exeptions.MyEJBExeption;
 import java.text.ParseException;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -62,23 +63,16 @@ public class Pedidos extends MyGenericRest<Pedido> {
         } catch (ParseException ex) {
         }
 
-        System.out.println("\nChaves :" + form.keySet() + "\n");
-
-        System.out.println("Values :" + form.values() + "\n");
-
-
         Set<PedidosProduto> lista_itens = new LinkedHashSet<PedidosProduto>();
 
 
         int contador = 0;
         double totalPedido = 0;
-        for (int x = 0; x < qtd_itens; x++) {//qtd_itens >= contador) {
+        for (int x = 0; x < qtd_itens; x++) {
             PedidosProduto item = new PedidosProduto();
-            System.out.println(form.getFirst("pedido.produto.id[" + contador + "]"));
             String var = form.getFirst("pedido.produto.id[" + contador + "]");
-            System.out.println(var);
             Long pro_id = Long.parseLong(var);
-            System.out.println(pro_id);
+
             int qtd_pro = Integer.parseInt(form.getFirst("pedido.produto.quantidade[" + contador + "]"));
             Produto pro = dao.findProdutoById(pro_id);
             item.getPk().setProduto(pro);
@@ -245,6 +239,9 @@ public class Pedidos extends MyGenericRest<Pedido> {
             getModel().save(obj);
             Exclude e = new Exclude().exclude("pedido");
             return Response.ok(Render.JSON(Result.OK(obj), e)).type("application/json").header("Access-Control-Allow-Origin", "*").build();
+        } catch (MyEJBExeption ex) {
+            System.out.println(ex.getMymessage());
+            return Response.ok(Render.JSON(Result.SYSERROR(ex.getMessage()))).type("application/json").header("Access-Control-Allow-Origin", "*").build();
         } catch (Exception ex) {
             //ex.printStackTrace();
             return Response.ok(Render.JSON(Result.SYSERROR(ex.getMessage()))).type("application/json").header("Access-Control-Allow-Origin", "*").build();

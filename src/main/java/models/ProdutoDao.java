@@ -4,6 +4,9 @@
  */
 package models;
 
+import exeptions.MyEJBExeption;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
@@ -55,13 +58,28 @@ public class ProdutoDao extends GenericModel<Produto> {
     }
 
     public void baixarEstoque(Produto pro, int quantidade) throws Exception {
+
+        System.out.println("QUantidade produto" + pro.getQuantidade() + " quantidade baixa" + quantidade);
         if (pro.getQuantidade() >= quantidade) {
             pro.setQuantidade(pro.getQuantidade() - quantidade);
+            System.out.println("Baixar estoque");
             super.update(pro);
         } else {
-            throw new EJBException("Quantidade do produto " + pro.getNome()
-                    + " é insuficiente em estoque!");
+
+            System.out.println("EJB Exeption");
+            throw new MyEJBExeption("Quantidade do produto " + pro.getNome() + " é insuficiente em estoque!");
         }
-    }   
-    
+    }
+
+    public Collection<Produto> getDisponiveis() {
+        List<Produto> produtos = this.findAll();
+        List<Produto> disponiveis = new ArrayList<Produto>();
+
+        for (Produto produto : produtos) {
+            if (produto.getQuantidade() > 0) {
+                disponiveis.add(produto);
+            }
+        }
+        return disponiveis;
+    }
 }

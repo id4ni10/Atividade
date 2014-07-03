@@ -1,4 +1,4 @@
-/*C3*/SET SCHEMA PUBLIC
+/*C43*/SET SCHEMA PUBLIC
 alter table cotacoes_produtos drop constraint FK23E169E695989467
 alter table cotacoes_produtos drop constraint FK23E169E65760407
 alter table pedidos_produtos drop constraint FK48DF97EB95989467

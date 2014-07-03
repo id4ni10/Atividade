@@ -4,6 +4,9 @@
  */
 package models;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -50,8 +53,9 @@ public class PedidoDao extends GenericModel<Pedido> {
 
     @Override
     public void save(Pedido obj) throws Exception {
-
+        System.out.println("Salvando o pedido: "+ obj);
         for (PedidosProduto item : obj.getPedidosProduto()) {
+            System.out.println("Buscando o produto: "+ item.getPk().getProduto());
             dao.baixarEstoque(item.getPk().getProduto(), item.getQuantidade());
         }
         super.save(obj);

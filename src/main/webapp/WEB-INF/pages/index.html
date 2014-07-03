@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Pedidos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" media="screen">
+    <link href="../css/estilo.css" rel="stylesheet" media="screen">
+    
+  </head>
+  <body>
+    <div id="painel">
+    <div class="panel panel-default">
+      <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a class="home" href="#home" data-toggle="tab">Cadastro de Pedido</a></li>
+        <li><a class="listagem" href="#listagem" data-toggle="tab">Lista de Pedidos</a></li>
+        <li><a class="visualizacao" href="#visualizacao" data-toggle="tab">Visualizar Pedido</a></li>
+      </ul>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <form id="frm" role="form">
+              <div class="form-group">
+                <input id="cadastro-cpf" name="cadastro-cpf" type="text" placeholder="Informe o CPF" class="form-control" required="">
+              </div>
+              <div class="form-group">
+                <input id="cadastro-nome" name="cadastro-nome" type="text" placeholder="Informe o nome" class="form-control">
+              </div>
+              <div class="form-group">
+                <textarea id="cadastro-endereco" name="cadastro-endereco" class="form-control" placeholder="End. Entrega"></textarea>
+              </div>
+              <div class="form-group">
+                <input id="cadastro-data" name="cadastro-data" type="text" placeholder="00/00/0000" class="form-control date">
+              </div>
+              <div id="adicao-produto" class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Produtos<span id="cadastro-adicionar" name="cadastro-adicionar" class="btn btn-info glyphicon glyphicon-plus"></span></h3>
+                </div>
+                <div class="panel-body">
+                  <table class="table" id="listagem-produtos">
+                    <thead>
+                      <tr>
+                        <th>Produto</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Qtd</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                  <!-- Text input-->
+                  <div class="control-group">
+                    <label class="control-label" for="pedido-total">TOTAL</label>
+                    <div class="controls">
+                      <input type="text" id="pedido-total" name="pedido-total" placeholder="0,00" disabled class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="concluir">
+                <!-- Ações do Pedido -->
+                <!-- Button (Double) -->
+                <div class="control-group">
+                  <label class="control-label" for="cadastro-salvar"></label>
+                  <div class="controls">
+                    <span id="cadastro-salvar" name="cadastro-salvar" class="btn btn-success">Salvar</span>
+                    <span id="cadastro-cancelar" name="cadastro-cancelar" class="btn btn-danger">Cancelar</span>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane" id="listagem">
+            <!-- Button -->
+            <div class="controls">
+              <button id="listagem-novo" name="listagem-novo" class="btn btn-success">Adicionar Novo Pedido</button>
+            </div>
+            <table id="listagem-tabela"  class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>CPF</th>
+                  <th>Nome</th>
+                  <th>Data</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class="listagem-id">1</th>
+                  <td class="listagem-cpf">111.111.111-11111.111.111-11</td>
+                  <td class="listagem-nome"> João</td>
+                  <td class="listagem-data">12/05/2014</td>
+                  <td class="listagem-acoes">Visualizar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane" id="visualizacao">
+            <div id="rootwizard">
+              <ul class="nav nav-pills">
+                <li class="active"><a href="#pedido" data-toggle="tab">Pedido</a></li>
+                <li><a href="#produto" data-toggle="tab">Produto</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="pedido" >
+                  <div  id="visualizar-pedido">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>CPF</th>
+                          <th>Nome</th>
+                          <th>End. Entrega</th>
+                          <th>Data</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="form-group"><input type="text" class="visualizar-cpf form-control" name="visualizar-cpf" placeholder="CPF" disabled=></div>
+                          </td>
+                          <td>
+                            <div class="form-group"><input type="text" class="visualizar-solicitante form-control" name="visualizar-solicitante" placeholder="solicitante" disabled></div>
+                          </td>
+                          <td>
+                            <div class="form-group"><textarea class="visualizar-endereco form-control" name="visualizar-endereco " placeholder="End. Entrega" disabled></textarea></div>
+                          </td>
+                          <td>
+                            <div class="form-group"><input type="text" class="visualizar-data form-control" name="visualizar-data" placeholder="Data" disabled></div>
+                          </td>
+                          <td>
+                            <div class="form-group"><input type="text" class="visualizar-total form-control" name="visualizar-total" placeholder="Total" disabled></div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="tab-pane" id="produto">
+                  <div  id="visualizar-produto">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Produto</th>
+                          <th>Descrição</th>
+                          <th>Valor</th>
+                          <th>Qtd</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/jquery-1.10.2.js"></script>
+	<script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/pedidos.js"></script>
+	
+  </body>
+</html>

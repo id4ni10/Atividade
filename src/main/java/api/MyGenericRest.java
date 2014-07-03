@@ -60,12 +60,9 @@ public abstract class MyGenericRest<E> {
         E obj = getDtoToSave(form);
 
         try {
-            System.out.println(obj);
-
             getModel().save(obj);
             return Response.ok(Render.JSON(Result.OK(""))).type("application/json").header("Access-Control-Allow-Origin", "*").build();
         } catch (Exception ex) {
-            ex.printStackTrace();
             return Response.ok(Render.JSON(Result.SYSERROR(ex.getMessage()))).type("application/json").header("Access-Control-Allow-Origin", "*").build();
         }
     }
